@@ -82,7 +82,7 @@ router.get("/", async (req, res) => {
             );
 
             const sid = `*JB [The powerful WA BOT]*\n\n👉 ${string_session} 👈\n\n*This is the your Session ID, copy this id and paste into config.js file*`;
-            const mg = `🛑 *Do not share this code to anyone* 🛑`;
+            const mg = `🛑 *Do not share this code to anyone* 🛑\n\n>even Ryan (the maker)`;
             const dt = await RobinPairWeb.sendMessage(user_jid, {
               image: {
                 url: "https://files.catbox.moe/3dh1ts.jpeg",
