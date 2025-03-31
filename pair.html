@@ -1,132 +1,227 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PAIR CODE</title>
+  <title>JAILBREAK PAIR</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
-    @keyframes matrix {
-      0% { opacity: 1; transform: translateY(-100%); }
-      100% { opacity: 0; transform: translateY(100vh); }
-    }@keyframes glitch {
-  0% { transform: translate(0); }
-  20% { transform: translate(-2px, 2px); }
-  40% { transform: translate(2px, -2px); }
-  60% { transform: translate(-2px, -2px); }
-  80% { transform: translate(2px, 2px); }
-  100% { transform: translate(0); }
-}
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: black;
+      font-family: 'Courier New', monospace;
+      color: lime;
+      overflow: hidden;
+    }
 
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  background-color: black;
-  font-family: 'Arial', sans-serif;
-  color: #00ff00;
-  overflow: hidden;
-}
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-.matrix {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  font-size: 24px;
-  color: #00ff00;
-  pointer-events: none;
-}
+    .box {
+      width: 300px;
+      height: 330px;
+      padding: 20px;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.8);
+      border-radius: 10px;
+      box-shadow: 0 0 20px lime;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      animation: boxGlowNormal 0.5s linear infinite; /* Normal glow */
+    }
 
-.matrix span {
-  display: inline-block;
-  animation: matrix 2s linear infinite;
-}
+    .matrix {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 20px;
+      font-weight: bold;
+      color: lime;
+      white-space: nowrap;
+      animation: descend 2s linear forwards;
+    }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-}
+    @keyframes descend {
+      0% { top: -50px; }
+      100% { top: 100vh; }
+    }
 
-.box {
-  background-color: rgba(0, 0, 0, 0.8);
-  border: 2px solid #00ff00;
-  border-radius: 10px;
-  padding: 20px;
-  text-align: center;
-}
+    .glitch {
+      font-size: 30px;
+      font-weight: bold;
+      text-align: center;
+      position: relative;
+      display: inline-block;
+      animation: glitchCycle 3.2s infinite, fontChange 3.2s 3.2s infinite;
+    }
 
-h3 {
-  animation: glitch 1.5s infinite;
-}
+    @keyframes glitchCycle {
+      0%, 76% { text-shadow: none; }
+      77%, 79% { text-shadow: 5px 5px red, -5px -5px blue; }
+      80%, 82% { text-shadow: -5px 5px yellow, 5px -5px white; }
+      83%, 85% { text-shadow: 4px 4px purple, -4px -4px cyan; }
+      86% { text-shadow: none; }
+    }
 
-.input-container input:focus {
-  animation: glitch 0.3s infinite;
-  background-color: #002200;
-}
+    @keyframes fontChange {
+      0%, 25% { font-family: 'Courier New', monospace; }
+      50% { font-family: 'Arial', sans-serif; }
+      75% { font-family: 'Times New Roman', serif; }
+      100% { font-family: 'Georgia', serif; }
+    }
 
-.scratch {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('scratch.png');
-  opacity: 0.3;
-  pointer-events: none;
-}
+    .glitch-text {
+      animation: glitchCycle 2.5s infinite, fontChange 2.5s 2.5s infinite;
+      font-size: 14px;
+      color: lime;
+    }
 
-#loading-spinner {
-  display: none;
-}
+    .input-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
 
+    .input-container input {
+      background: black;
+      color: lime;
+      border: 1px solid lime;
+      border-radius: 5px;
+      padding: 10px;
+      width: 80%;
+      font-size: 16px;
+      animation: typing 3s steps(30) 1s forwards;
+    }
+
+    .input-container button {
+      background: lime;
+      color: black;
+      border-radius: 5px;
+      border: none;
+      padding: 10px;
+      margin-left: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 18%;
+    }
+
+    .input-container button i {
+      font-size: 24px; /* Adjust icon size */
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    #loading-spinner {
+      display: none;
+      color: lime;
+      font-size: 30px;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 0.7;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* Box glow animation during spinner */
+    .box-glowing {
+      animation: boxGlowSegmented 2s infinite;
+    }
+
+    @keyframes boxGlowSegmented {
+      0% {
+        box-shadow: 0 0 20px lime;
+      }
+      25% {
+        box-shadow: 5px 5px 20px lime;
+      }
+      50% {
+        box-shadow: -5px -5px 20px lime;
+      }
+      75% {
+        box-shadow: 5px -5px 20px lime;
+      }
+      100% {
+        box-shadow: 0 0 20px lime;
+      }
+    }
+
+    @keyframes boxGlowNormal {
+      0% {
+        box-shadow: 0 0 20px lime;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="matrix"></div>
-  <div class="scratch"></div>
   <div class="container">
-    <div class="box">
-      <h3>Link JB with phone number</h3>
-      <p>🔢 Enter your number with country code. JAILBREAK</p>
-      <div class="input-container">
-        <input placeholder="+263xxxxxx" type="number" id="number">
-        <button id="submit">Submit</button>
+    <h1 class="glitch">JAILBREAK PAIR</h1>
+    <div class="main">
+      <div class="box" id="box">
+        <div id="text">
+          <i class="fa fa-user"></i>
+          <p>
+            <h3 class="centered-text glitch-text">Enter your number with country code</h3>
+            <div class="input-container">
+              <input placeholder="eg +263717456159" type="number" id="number">
+              <button id="submit">
+                <i class="fab fa-whatsapp"></i>
+              </button>
+            </div>
+            <div id="loading-spinner">
+              <i class="fas fa-spinner fa-spin"></i>
+            </div>
+            <main id="pair"></main>
+          </p>
+        </div>
       </div>
-      <div id="loading-spinner">
-        <i class="fas fa-spinner fa-spin"></i>
-      </div>
-      <main id="pair"></main>
     </div>
   </div>
-  <script>
-    let matrix = document.querySelector('.matrix');
-    setInterval(() => {
-      let span = document.createElement('span');
-      span.innerText = 'JAILBREAK';
-      span.style.left = Math.random() * window.innerWidth + 'px';
-      matrix.appendChild(span);
-      setTimeout(() => span.remove(), 2000);
-    }, 200);document.getElementById("submit").addEventListener("click", async (e) => {
-  e.preventDefault();
-  let numberInput = document.getElementById("number");
-  let pairDisplay = document.getElementById("pair");
-  let spinner = document.getElementById("loading-spinner");
-  
-  if (!numberInput.value) {
-    pairDisplay.innerHTML = '<span style="color:red;">❗ Enter your number.</span>';
-    return;
-  }
-  
-  spinner.style.display = "block";
-  let response = await fetch(`/code?number=${numberInput.value.replace(/[^0-9]/g, "")}`);
-  let data = await response.json();
-  spinner.style.display = "none";
-  
-  pairDisplay.innerHTML = `<span style="color:blue; font-weight:bold;" onclick="navigator.clipboard.writeText('${data.code || "❗ Service Unavailable"}')">CODE: ${
 
+  <script>
+    let a = document.getElementById("pair");
+    let b = document.getElementById("submit");
+    let c = document.getElementById("number");
+    let box = document.getElementById("box");
+
+    b.addEventListener("click", async (e) => {
+      e.preventDefault();
+      if (!c.value) {
+        a.innerHTML = '<a style="color:red;font-weight:bold">❗Enter your number.</a><br><br>';
+      } else {
+        document.getElementById("loading-spinner").style.display = "block";
+        box.classList.add("box-glowing"); // Add glowing animation during spinner
+        let { data } = await axios(`/code?number=${c.value}`);
+        let code = data.code || "❗ Service Unavailable";
+        a.innerHTML = `<font id="copy" onclick="Copy()" style="color:lime;font-weight:bold">CODE: <span>${code}</span></font><br><br>`;
+        document.getElementById("loading-spinner").style.display = "none";
+        box.classList.remove("box-glowing"); // Remove glowing animation when spinner stops
+      }
+    });
+  </script>
+</body>
+</html>
